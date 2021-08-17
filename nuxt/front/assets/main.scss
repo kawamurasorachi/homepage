@@ -1,0 +1,17 @@
+@import "variable";
+@import "editor";
+
+body {
+  margin: 0;
+  background-color: $background-color;
+}
+.main {
+  display: flex;
+  .content {
+    width: calc(100% - #{$sidebar-width});
+    .wrapper {
+      min-width: 1200px;
+      margin: 0 calc((100% - 1200px) / 2);
+    }
+  }
+}

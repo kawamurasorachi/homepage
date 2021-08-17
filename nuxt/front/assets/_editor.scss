@@ -1,0 +1,219 @@
+@import "variable";
+
+.editor {
+  &_flex {
+    display: flex;
+    &_content {
+      width: 48%;
+      margin: 0 1%;
+      position: relative;
+      &_flex {
+        display: flex;
+        justify-content: space-between;
+        a {
+          font-weight: bold;
+          padding: 10px;
+          font-size: 20px;
+          color: white;
+          border-radius: 5px;
+          text-decoration: none;
+          vertical-align: bottom;
+          height: min-content;
+          margin: auto 0;
+          background-color: $main-color;
+          transition: 0.3s ease;
+          border: 2px $main-color solid;
+          &:hover {
+            background: none;
+            color: $main-color;
+            transition: 0.3s ease;
+            border: 2px $main-color solid;
+          }
+        }
+      }
+    }
+  }
+  &_thumbnail {
+    display: flex;
+    label {
+      display: block;
+      background-color: $main-color;
+      color: white;
+      width: 200px;
+      height: calc(200px * 1.414 - 200px);
+      margin-right: 20px;
+      padding: 80px 5px;
+      font-family: sans-serif;
+      text-align: center;
+      border-radius: 7px;
+      cursor: pointer;
+      img {
+        width: 30px;
+        height: 30px;
+      }
+    }
+    &_book {
+      width: 160px;
+      height: calc(200px * 1.414 - 40px);
+      border-radius: 7px;
+      object-fit: cover;
+      &_dummy {
+        width: 160px;
+        height: calc(200px * 1.414 - 40px);
+      }
+    }
+    &_article {
+      width: calc((200px * 1.414 - 40px) * 1.414);
+      height: calc(200px * 1.414 - 40px);
+      border-radius: 7px;
+      object-fit: cover;
+      &_dummy {
+        width: calc((200px * 1.414 - 40px) * 1.414);
+        height: calc(200px * 1.414 - 40px);
+      }
+    }
+  }
+  #upload_preview {
+    display: none;
+    box-shadow: 2px 2px 6px #bebebe, -2px -2px 6px #ffffff;
+  }
+  #upload_preview_dummy {
+    display: block;
+    border: 2px $font-strong dashed;
+    line-height: calc(200px * 1.414 - 40px);
+    text-align: center;
+    border-radius: 7px;
+  }
+  input[type="text"] {
+    margin: auto;
+    height: 30px;
+    border: none;
+    background: none;
+    border: 2px $font-color solid;
+    width: calc(100% - 20px);
+    color: $font-strong;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    font-family: "Roboto Mono", monospace;
+    outline: none;
+  }
+  .editor_section_title {
+    color: $font-strong;
+  }
+  .markdown-body {
+    width: 100%;
+    height: 300px;
+  }
+  #toggle {
+    display: inline-block;
+    padding: 10px 15px;
+
+    // Hide the ugly checkbox
+    > input[type="checkbox"] {
+      display: none;
+    }
+
+    // New beautiful checkbox
+    i {
+      display: inline-block;
+      float: right;
+      padding: 2px;
+      width: 60px;
+      height: 30px;
+      border-radius: 30px;
+      vertical-align: middle;
+      transition: 0.25s 0.09s;
+      position: relative;
+      background: #d8d9db;
+      box-sizing: initial;
+      &:after {
+        content: " ";
+        display: block;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #fff;
+        position: absolute;
+        left: 2px;
+        transition: 0.25s;
+      }
+    }
+
+    // Checked-state
+    > input[type="checkbox"]:checked + i {
+      background: $main-color;
+    }
+
+    > input[type="checkbox"]:checked + i:after {
+      transform: translateX(30px);
+    }
+
+    // Label-hover
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  #post {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: min-content;
+    height: min-content;
+    white-space: nowrap;
+    font-size: 30px;
+    margin: auto;
+    padding: 5px 40px;
+    border-radius: 15px;
+    background: $main-color;
+    color: white;
+    border: 2px $main-color solid;
+    transition: 0.3s ease;
+    &:hover {
+      background: none;
+      color: $main-color;
+      transition: 0.3s ease;
+      border: 2px $main-color solid;
+    }
+  }
+  &_selected_item {
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px $font-color solid;
+    margin-left: 5px;
+    white-space: nowrap;
+    height: 40px;
+    &_outer {
+      display: flex;
+      align-content: flex-start;
+      width: 100%;
+      flex-wrap: wrap;
+      padding: 2px;
+      border: 2px $font-color solid;
+      border-radius: 7px;
+      height: 20vh;
+    }
+  }
+  .select_article_list {
+    height: 15vh;
+    margin: 2px 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    .visiable {
+      display: flex;
+    }
+    .invisiable {
+      display: none;
+    }
+    &_item {
+      p {
+        margin: 0;
+        &:first-child {
+          width: 30px;
+        }
+      }
+    }
+  }
+}
