@@ -32,7 +32,7 @@
                 :class="`sidebar_nav_link ${
                     position == 'book' ? 'sidebar_nav_is_here' : ''
                 }`"
-                href=""
+                href="/book"
             >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"

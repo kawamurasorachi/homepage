@@ -37,7 +37,14 @@ class ArticleListApiView(ListAPIView):
     renderer_classes = (ArticleJSONRenderer, )
     serializer_class = ArticleSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ('id',)
+    filterset_fields = ('id','is_book')
+
+class ArticleNotBookListApiView(ListAPIView):
+    model = Article
+    queryset = Article.objects.filter(is_book__isnull=True)
+    permission_classes = (AllowAny, )
+    renderer_classes = (ArticleJSONRenderer, )
+    serializer_class = ArticleSerializer
 
 class ArticleCreateApiView(CreateAPIView):
     model = Article

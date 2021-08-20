@@ -7,3 +7,4 @@ psycopg2==2.8.6
 Pillow
 uwsgi
 djoser
+django-taggit==1.5.1
