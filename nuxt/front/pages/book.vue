@@ -2,8 +2,8 @@
     <div class="main">
         <Sidebar :position="$route.name.split('-')[0]" />
         <main class="content">
-            <article class="wrapper article">
-                <ArticleCard :articles="articles" />
+            <article class="wrapper book">
+                <BookCard :books="books" />
             </article>
         </main>
     </div>
@@ -13,18 +13,18 @@
 export default {
     data() {
         return {
-            articles: [],
+            books: [],
         };
     },
     mounted() {
         this.$axios
-            .get("get_article_not_book/")
-            .then((response) => (this.articles = response.data.article));
+            .get("get_book/")
+            .then((response) => (this.books = response.data.book));
     },
 };
 </script>
 
 <style lang="scss" scoped>
-.article {
+.book {
 }
 </style>

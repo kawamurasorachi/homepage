@@ -14,7 +14,6 @@ class ArticleImageSerializer(serializers.ModelSerializer):
         model = ArticleImage
         fields = '__all__'
 
-
 from django.core import serializers as django_serializers
 
 
