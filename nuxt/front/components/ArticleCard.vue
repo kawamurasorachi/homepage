@@ -6,7 +6,7 @@
                 name: 'article-id',
                 params: { id: article.id },
             }"
-            v-for="article in articles"
+            v-for="article in articles.filter((book) => book.is_public)"
             :key="article.id"
         >
             <li>
