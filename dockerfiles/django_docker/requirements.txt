@@ -8,3 +8,4 @@ Pillow
 uwsgi
 djoser
 django-taggit==1.5.1
+django-taggit-serializer

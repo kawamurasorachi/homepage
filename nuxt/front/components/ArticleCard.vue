@@ -1,25 +1,36 @@
 <template>
     <ul class="article_card">
-        <a
+        <nuxt-link
             class="article_card_item"
+            :to="{
+                name: 'article-id',
+                params: { id: article.id },
+            }"
             v-for="article in articles"
             :key="article.id"
-            href=""
         >
             <li>
                 <div class="image_wrapper">
                     <img :src="article.thumbnail" alt="thumbnail" />
                 </div>
+                <div class="tag_container">
+                    <span
+                        class="tag_item"
+                        v-for="tag in article.tags"
+                        :key="tag"
+                    >
+                        {{ tag }}
+                    </span>
+                </div>
                 <h3>{{ article.title }}</h3>
                 <p>{{ article.description }}</p>
                 <span class="created_at">
-                    {{ article.created_at.split("-")[0] }}<br />
                     {{ article.created_at.split("-")[1] }}/{{
                         article.created_at.split("-")[2]
-                    }}<br />
+                    }}
                 </span>
             </li>
-        </a>
+        </nuxt-link>
     </ul>
 </template>
 
@@ -30,6 +41,7 @@ export default {
 </script>
 
 <style lang="scss" scope>
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;300&display=swap");
 .article_card {
     padding: 0;
     display: flex;
@@ -45,7 +57,6 @@ export default {
         border-radius: $article-card-radius;
         position: relative;
         text-decoration: none;
-        overflow: hidden;
         &:hover img {
             transform: scale(1.05, 1.05);
             transition: 0.3s ease;
@@ -80,16 +91,43 @@ export default {
         }
         .created_at {
             position: absolute;
-            width: 60px;
+            width: 65px;
+            padding-right: 5px;
+            height: 30px;
+            transform: translateX(-10px);
             line-height: 30px;
-            text-align: center;
-            height: 60px;
+            text-align: right;
             background-color: $main-color;
-            top: 0;
+            top: 10px;
             left: 0;
             color: $card-background-color;
-            border-top-left-radius: $article-card-radius;
             font-weight: bold;
+            &:before {
+                content: "";
+                top: 30px;
+                left: 0;
+                position: absolute;
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 0 10px 5px 0;
+                border-color: transparent $main-color-strong transparent
+                    transparent;
+            }
+        }
+        .tag {
+            &_item {
+                color: $card-background-color;
+                background-color: $main-color;
+                border-radius: 15px;
+                padding: 2px 7px;
+                margin: 0 3px;
+            }
+            &_container {
+                display: flex;
+                flex-wrap: wrap;
+                margin: 0.3rem 0.3rem 0;
+            }
         }
     }
 }

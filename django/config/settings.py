@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'djoser',
     'django_filters',
+    'taggit',
+    'taggit_serializer',
 ]
 
 MIDDLEWARE = [

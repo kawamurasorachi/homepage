@@ -185,6 +185,9 @@
     margin-left: 5px;
     white-space: nowrap;
     height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     &_outer {
       display: flex;
       align-content: flex-start;

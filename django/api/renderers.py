@@ -18,3 +18,9 @@ class ArticleImageJSONRenderer(JSONRenderer):
 
     def render(self, data, accepted_media_type=None, renderer_context=None):
         return json.dumps({'article_image': data},ensure_ascii=False)
+
+class TagJSONRenderer(JSONRenderer):
+    charset = 'utf-8'  
+
+    def render(self, data, accepted_media_type=None, renderer_context=None):
+        return json.dumps({'tags': data},ensure_ascii=False)

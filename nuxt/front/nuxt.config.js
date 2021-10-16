@@ -20,16 +20,27 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [{ src: "~/assets/main.scss", lang: "scss" }],
+  css: [
+    { src: "~/assets/main.scss", lang: "scss" },
+    {
+      src: "~/node_modules/highlight.js/styles/monokai-sublime.css",
+      lang: "css"
+    }
+  ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     {
-      src: "@/plugins/vue-mavon-editor",
+      src: "~/plugins/vue-mavon-editor",
       srr: false
-    }
+    },
+    "~/plugins/katex"
   ],
-
+  
+  env: {
+    topURL: process.env.topURL
+  },
+  
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
@@ -41,17 +52,54 @@ export default {
     // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
     "@nuxtjs/auth-next",
-    "@nuxtjs/style-resources"
+    "@nuxtjs/style-resources",
+    "@nuxtjs/markdownit"
   ],
+  markdownit: {
+    preset: "default",
+    injected: true,
+    breaks: true,
+    html: true,
+    linkify: true,
+    typography: true,
+    xhtmlOut: true,
+    langPrefix: "language-",
+    quotes: "“”‘’",
+    use: [
+      "markdown-it-highlightjs",
+      [
+        "markdown-it-table-of-contents",
+        {
+          includeLevel: [2, 3],
+          containerHeaderHtml: '<div class="toc-container-header">Index</div>',
+          listType: "ol"
+        }
+      ],
+      "markdown-it-anchor",
+      [
+        "markdown-it-link-attributes",
+        {
+          attrs: {
+            target: "_blank",
+            rel: "noopener"
+          }
+        }
+      ],
+      "markdown-it-video",
+      "markdown-it-katex",
+      "markdown-it-mark"
+    ]
+  },
 
   styleResources: {
     scss: ["~/assets/_variable.scss"]
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
+
   axios: {
-    baseURL: "http://django:8001/api",
-    browserBaseURL: "http://localhost/api"
+    baseURL: process.env.baseURL,
+    browserBaseURL: process.env.browserBaseURL
   },
 
   auth: {

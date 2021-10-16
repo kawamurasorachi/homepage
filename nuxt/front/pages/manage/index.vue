@@ -128,16 +128,6 @@ export default {
         };
     },
     middleware: "auth",
-    // async asyncData({ $axios }) {
-    //     const url1 = "get_book/";
-    //     const url2 = "get_article/";
-    //     const response1 = await $axios.get(url1);
-    //     const response2 = await $axios.get(url2);
-    //     return {
-    //         books: response1.data.book,
-    //         articles: response2.data.article,
-    //     };
-    // },
     mounted() {
         this.$axios
             .get("get_book/")
@@ -204,6 +194,10 @@ export default {
         }
         &_item {
             margin-left: 10px;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
             &:nth-child(1) {
                 width: 100px;
             }
@@ -218,6 +212,9 @@ export default {
             }
             &:nth-child(5) {
                 width: 120px;
+            }
+            &:nth-child(6) {
+                width: 100px;
             }
         }
     }

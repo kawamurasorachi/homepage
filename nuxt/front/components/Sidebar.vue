@@ -130,7 +130,7 @@
 
 <script>
 export default {
-    props: ["position"],
+    props: ["position", "is_sidebar"],
     computed: {
         auth() {
             return this.$auth;
@@ -150,7 +150,8 @@ export default {
 //     outline: 2px red solid;
 // }
 .sidebar {
-    position: relative;
+    position: sticky;
+    top: 0;
     width: $sidebar-width;
     height: 100vh;
     background-color: white;
