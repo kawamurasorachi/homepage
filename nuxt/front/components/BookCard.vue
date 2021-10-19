@@ -1,13 +1,31 @@
 <template>
     <ul class="book_card">
-        <a class="book_card_item" v-for="book in books" :key="book.id" href="">
+        <p v-if="!books.length">本はまだありません。</p>
+        <nuxt-link
+            class="book_card_item"
+            v-for="book in books.filter((book) => book.is_public)"
+            :key="book.id"
+            :to="{
+                name: 'book-bookid',
+                params: { bookid: book.id },
+            }"
+        >
             <li>
-                <div class="image_wrapper">
-                    <img :src="book.thumbnail" alt="thumbnail" />
+                <div
+                    class="caption"
+                    :style="`background-image:url(${book.thumbnail})`"
+                >
+                    <div class="caption_wrapper">
+                        <div class="caption_title">
+                            {{ book.title }}
+                        </div>
+                        <div class="caption_description">
+                            {{ book.description }}
+                        </div>
+                    </div>
                 </div>
-                <h3>{{ book.title }}</h3>
             </li>
-        </a>
+        </nuxt-link>
     </ul>
 </template>
 
@@ -25,54 +43,64 @@ export default {
     &_item {
         display: block;
         list-style: none;
-        width: calc(100% / 5 - 10px * 2);
-        height: 430px;
-        margin: 10px;
+        width: calc(100% / 4 - 20px * 2);
+        margin: 20px;
         position: relative;
         text-decoration: none;
+        &:hover {
+            .caption_wrapper {
+                top: 0;
+                background-color: rgba(0, 0, 0, 0.4);
+                transition: 0.5s ease;
+            }
+        }
         li {
             width: 100%;
-            .image_wrapper {
+            .caption {
+                position: relative;
                 width: 100%;
-                height: 300px;
-                img {
-                    width: 100%;
-                    height: 360px;
-                    transition: 0.3s ease;
-                    width: inherit;
-                    height: inherit;
-                    object-fit: cover;
-                    margin: 0;
-                    border-radius: $book-card-radius;
-                    box-shadow: 2px 2px 6px #bebebe, -2px -2px 6px #ffffff;
-                }
-                &:before {
-                    content: "";
-                    position: absolute;
-                    width: 10px;
-                    height: inherit;
-                    left: 0;
-                    background-color: rgba(0, 0, 0, 0.5);
-                    border-radius: $book-card-radius 0 0 $book-card-radius;
-                }
-            }
-            h3 {
-                margin: 0.6rem 1.2rem 0;
-                display: -webkit-box;
-                -webkit-line-clamp: 3;
-                -webkit-box-orient: vertical;
+                height: 370px;
+                background-size: cover;
+                background-position: center;
+                border-radius: 5px;
                 overflow: hidden;
-                color: $font-strong;
-            }
-            p {
-                color: $font-color;
-            }
-            .created_at {
-                position: absolute;
-                bottom: 0;
-                right: 0;
-                margin: 3px 5px;
-                color: $font-color;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                &_wrapper {
+                    position: absolute;
+                    top: 60%;
+                    width: calc(100% - 10px * 2);
+                    height: calc(100% - 10px * 2);
+                    background-color: rgba(0, 0, 0, 0);
+                    padding: 10px;
+                    color: $card-background-color;
+                    transition: 0.5s ease;
+                }
+                &_title {
+                    width: 100%;
+                    height: 150px;
+                    font-size: 24px;
+                    text-align: center;
+                    font-weight: bold;
+                    display: -webkit-flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    text-shadow: 0px 0px 5px rgb(0, 0, 0);
+                }
+                &_description {
+                    width: inherit;
+                    height: 100px;
+                    display: -webkit-box;
+                    align-items: center;
+                    -webkit-line-clamp: 4;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                }
             }
         }
     }

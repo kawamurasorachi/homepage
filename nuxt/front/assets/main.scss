@@ -1,5 +1,6 @@
 @import "variable";
 @import "editor";
+@import "article";
 
 body {
   margin: 0;
@@ -9,9 +10,16 @@ body {
   display: flex;
   .content {
     width: calc(100% - #{$sidebar-width});
+    &.book {
+      width: calc(100% - #{$navbar-width});
+    }
     .wrapper {
       min-width: 1200px;
       margin: 0 calc((100% - 1200px) / 2);
+      &.section {
+        min-width: 920px !important;
+        margin: 0 calc((100% - 920px) / 2) !important;
+      }
     }
   }
 }

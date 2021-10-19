@@ -6,7 +6,7 @@
                 name: 'article-id',
                 params: { id: article.id },
             }"
-            v-for="article in articles"
+            v-for="article in articles.filter((book) => book.is_public)"
             :key="article.id"
         >
             <li>
@@ -102,6 +102,7 @@ export default {
             left: 0;
             color: $card-background-color;
             font-weight: bold;
+            font-family: "Roboto Mono", monospace;
             &:before {
                 content: "";
                 top: 30px;
@@ -118,6 +119,7 @@ export default {
         .tag {
             &_item {
                 color: $card-background-color;
+                font-family: "Roboto Mono", monospace;
                 background-color: $main-color;
                 border-radius: 15px;
                 padding: 2px 7px;

@@ -1,5 +1,5 @@
 <template>
-    <div class="sidebar">
+    <div id="sidebar" class="sidebar">
         <div class="sidebar_nav">
             <a
                 :class="`sidebar_nav_link ${
@@ -152,7 +152,7 @@ export default {
 .sidebar {
     position: sticky;
     top: 0;
-    width: $sidebar-width;
+    min-width: $sidebar-width;
     height: 100vh;
     background-color: white;
     font-family: "Roboto Mono", monospace;
