@@ -54,7 +54,7 @@ class BookSerializer(serializers.ModelSerializer):
         edit_data = []
         for i in json.loads(return_data):
             i['fields']['thumbnail'] = '/django-media/' + i['fields']['thumbnail']
-            edit_data.append(i)
+            edit_data.append(i['fields'])
         return edit_data
 
     def get_thumbnail(self, obj):

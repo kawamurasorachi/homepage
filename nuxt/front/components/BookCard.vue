@@ -1,5 +1,6 @@
 <template>
     <ul class="book_card">
+        <p v-if="!books.length">本はまだありません。</p>
         <nuxt-link
             class="book_card_item"
             v-for="book in books.filter((book) => book.is_public)"

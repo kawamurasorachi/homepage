@@ -106,6 +106,7 @@ export default {
         margin: 30px 0;
         .tag {
             text-decoration: none;
+            font-family: "Roboto Mono", monospace;
             display: block;
             margin: 5px;
             padding: 5px 15px;

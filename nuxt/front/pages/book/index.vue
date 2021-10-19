@@ -8,11 +8,11 @@
                     <input
                         name="search"
                         type="text"
-                        placeholder="記事を検索"
+                        placeholder="本を検索"
                         v-model="search_text"
                     />
                 </div>
-                <BookCard :books="books" />
+                <BookCard :books="get_books(search_text)" />
             </article>
         </main>
     </div>
@@ -30,6 +30,18 @@ export default {
         this.$axios
             .get("get_book/")
             .then((response) => (this.books = response.data.book));
+    },
+    methods: {
+        get_books(search_text) {
+            var new_books = this.books.filter(function (item, index) {
+                if (
+                    item.title.indexOf(search_text) >= 0 ||
+                    item.description.indexOf(search_text) >= 0
+                )
+                    return true;
+            });
+            return new_books;
+        },
     },
 };
 </script>

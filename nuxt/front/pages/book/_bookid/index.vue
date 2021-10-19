@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <BookNavbar :nav_list="book.article" />
+        <Sidebar :position="$route.name.split('-')[0]" />
         <main class="content book">
             <article class="wrapper">
                 <div class="book_meta">
@@ -30,18 +30,17 @@
                             },
                         }"
                     >
-                        <img :src="section.fields.thumbnail" alt="" />
+                        <img :src="section.thumbnail" alt="" />
                         <div class="book_section_item_caption">
-                            <h3>
-                                第{{ index + 1 }}章　{{ section.fields.title }}
-                            </h3>
-                            <p>{{ section.fields.description }}</p>
-                            <p>{{ section.fields.created_at }}</p>
+                            <h3>第{{ index + 1 }}章　{{ section.title }}</h3>
+                            <p>{{ section.description }}</p>
+                            <p>{{ section.created_at }}</p>
                         </div>
                     </nuxt-link>
                 </div>
             </article>
         </main>
+        <BookNavbar :nav_list="book.article" />
     </div>
 </template>
 

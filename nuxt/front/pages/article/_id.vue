@@ -41,7 +41,6 @@
                         </span>
                     </div>
                 </div>
-                <div class="toc"></div>
                 <div
                     class="article_content"
                     v-html="$md.render(article.content)"
@@ -56,7 +55,7 @@ export default {
     data() {
         return {
             is_sidebar: false,
-            topURL: process.env.topURL
+            topURL: process.env.topURL,
         };
     },
     head() {
@@ -173,129 +172,6 @@ export default {
                 display: flex;
                 flex-wrap: wrap;
                 margin: 0 0.3rem;
-            }
-        }
-    }
-    &_content {
-        background-color: $card-background-color;
-        border-radius: 5px;
-        margin-top: 30px;
-        padding: 40px;
-        h2 {
-            font-size: 1.8rem;
-            position: relative;
-            &:before {
-                content: "";
-                position: absolute;
-                left: -15px;
-                width: 5px;
-                height: 100%;
-                background-color: $main-color;
-            }
-        }
-        h3 {
-            border-bottom: 0.1rem $font-color solid;
-            font-size: 1.5rem;
-        }
-        pre {
-            font-size: 1.1rem;
-        }
-        code {
-            font-family: "Source Code Pro", monospace;
-            border-radius: 3px;
-            padding: 1.1rem;
-        }
-        img {
-            margin: 0 10%;
-            width: 80%;
-            object-fit: cover;
-            border-radius: 10px;
-        }
-        strong {
-            background: linear-gradient(
-                transparent 70%,
-                rgba($main-color, 0.6) 30%
-            );
-        }
-        .embed-responsive {
-            text-align: center;
-        }
-        .table-of-contents {
-            border-radius: 5px;
-            padding: 10px;
-            background-color: $toc-background-color;
-            a {
-                text-decoration: none;
-                color: $font-strong;
-                font-size: 1.2rem;
-                font-weight: bold;
-            }
-            ol {
-                counter-reset: number; /*数字をリセット*/
-                list-style-type: none !important; /*数字を一旦消す*/
-                padding: 0.5em;
-            }
-            ol li {
-                position: relative;
-                padding-left: 50px;
-                line-height: 1.5em;
-                padding: 0.5em 0.5em 0.5em 50px;
-            }
-
-            ol li:before {
-                position: absolute;
-                counter-increment: number;
-                content: counters(number, ".");
-                display: inline-block;
-                background: $main-color;
-                color: $card-background-color;
-                font-weight: bold;
-                font-size: 15px;
-                border-radius: 50%;
-                left: 0;
-                padding: 5px;
-                width: 25px;
-                height: 25px;
-                line-height: 25px;
-                text-align: center;
-                top: 20px;
-                -webkit-transform: translateY(-50%);
-                transform: translateY(-50%);
-            }
-            li {
-                color: $font-color;
-                & > a {
-                    color: inherit;
-                }
-            }
-            & > ol {
-                margin-bottom: 0;
-                & > li {
-                    color: $font-strong;
-                    & > a {
-                        color: inherit;
-                    }
-                }
-            }
-            .toc-container-header {
-                font-size: 1.5rem;
-                display: flex;
-                padding-left: 1rem;
-                color: $main-color;
-                font-weight: bold;
-                li {
-                    list-style: upper-alpha;
-                }
-                &::before {
-                    top: 0;
-                    bottom: 0;
-                    margin: auto 1rem auto 0;
-                    display: block;
-                    content: "";
-                    width: 24px;
-                    height: 24px;
-                    background-image: url("~/assets/image/index.svg");
-                }
             }
         }
     }
