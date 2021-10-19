@@ -5,8 +5,8 @@
             v-for="book in books.filter((book) => book.is_public)"
             :key="book.id"
             :to="{
-                name: 'book-id',
-                params: { id: book.id },
+                name: 'book-bookid',
+                params: { bookid: book.id },
             }"
         >
             <li>
@@ -74,7 +74,6 @@ export default {
                     background-color: rgba(0, 0, 0, 0);
                     padding: 10px;
                     color: $card-background-color;
-                    text-shadow: 0px 0px 5px rgb(0, 0, 0);
                     transition: 0.5s ease;
                 }
                 &_title {
@@ -90,6 +89,7 @@ export default {
                     -webkit-line-clamp: 2;
                     -webkit-box-orient: vertical;
                     overflow: hidden;
+                    text-shadow: 0px 0px 5px rgb(0, 0, 0);
                 }
                 &_description {
                     width: inherit;

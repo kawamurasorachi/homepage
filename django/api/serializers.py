@@ -51,7 +51,11 @@ class BookSerializer(serializers.ModelSerializer):
     def get_article(self, obj):
         article_data = Article.objects.filter(is_book_id=obj.id)
         return_data = django_serializers.serialize("json", article_data, ensure_ascii=False)
-        return json.loads(return_data)
+        edit_data = []
+        for i in json.loads(return_data):
+            i['fields']['thumbnail'] = '/django-media/' + i['fields']['thumbnail']
+            edit_data.append(i)
+        return edit_data
 
     def get_thumbnail(self, obj):
         return '/django-media/'+str(obj.thumbnail)
