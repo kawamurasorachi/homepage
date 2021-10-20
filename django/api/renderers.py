@@ -24,3 +24,9 @@ class TagJSONRenderer(JSONRenderer):
 
     def render(self, data, accepted_media_type=None, renderer_context=None):
         return json.dumps({'tags': data},ensure_ascii=False)
+
+class WorkJSONRenderer(JSONRenderer):
+    charset = 'utf-8'  
+
+    def render(self, data, accepted_media_type=None, renderer_context=None):
+        return json.dumps({'work': data},ensure_ascii=False)

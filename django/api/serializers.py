@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Book,Article,ArticleImage
+from .models import Book,Article,ArticleImage,Work
 import json
 from taggit_serializer.serializers import (TagListSerializerField,
                                            TaggitSerializer)
@@ -65,3 +65,10 @@ class BookSerializer(serializers.ModelSerializer):
         model_fields = ['id', 'thumbnail', 'title', 'description', 'created_at', 'is_public']
         extra_fields = ['article']
         fields = model_fields + extra_fields
+
+
+class WorkSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Work
+        fields = '__all__'

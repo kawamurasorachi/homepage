@@ -1,14 +1,14 @@
 from django.shortcuts import render
 from django.views.generic import ListView
 
-from .models import Book, Article, ArticleImage
+from .models import Book, Article, ArticleImage, Work
 from taggit.models import Tag
 from rest_framework import status
 from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView
 from rest_framework.permissions import AllowAny
 
-from .renderers import BookJSONRenderer, ArticleJSONRenderer, ArticleImageJSONRenderer, TagJSONRenderer
-from .serializers import BookSerializer, ArticleSerializer, ArticleImageSerializer, TagSerializer
+from .renderers import BookJSONRenderer, ArticleJSONRenderer, ArticleImageJSONRenderer, TagJSONRenderer, WorkJSONRenderer
+from .serializers import BookSerializer, ArticleSerializer, ArticleImageSerializer, TagSerializer, WorkSerializer
 
 from django_filters.rest_framework import DjangoFilterBackend
 
@@ -55,6 +55,14 @@ class TagsListApiView(ListAPIView):
     permission_classes = (AllowAny, )
     renderer_classes = (TagJSONRenderer, )
     serializer_class = TagSerializer
+
+
+class WorkListApiView(ListAPIView):
+    model = Work
+    queryset = Work.objects.all()
+    permission_classes = (AllowAny, )
+    renderer_classes = (WorkJSONRenderer, )
+    serializer_class = WorkSerializer
 
 class ArticleCreateApiView(CreateAPIView):
     model = Article

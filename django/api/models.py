@@ -30,4 +30,11 @@ class Article(models.Model):
 class ArticleImage(models.Model):
     image = models.ImageField(upload_to='article_image')
 
-
+class Work(models.Model):
+    thumbnail = models.ImageField(upload_to='work_thumbnail')
+    tag = models.CharField(max_length=100)
+    title = models.CharField(max_length=100)
+    content = models.TextField()
+    created_at = models.DateField(auto_now_add=True)  
+    repo_url = models.URLField(blank=True)
+    site_url = models.URLField(blank=True)
