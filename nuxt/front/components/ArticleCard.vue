@@ -3,7 +3,7 @@
         <nuxt-link
             class="article_card_item"
             :to="{
-                name: 'article-id',
+                name: 'articles-id',
                 params: { id: article.id },
             }"
             v-for="article in articles.filter((book) => book.is_public)"

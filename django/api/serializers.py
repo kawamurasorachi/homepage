@@ -68,6 +68,10 @@ class BookSerializer(serializers.ModelSerializer):
 
 
 class WorkSerializer(serializers.ModelSerializer):
+    thumbnail = serializers.SerializerMethodField()
+
+    def get_thumbnail(self, obj):
+        return '/django-media/'+str(obj.thumbnail)
 
     class Meta:
         model = Work

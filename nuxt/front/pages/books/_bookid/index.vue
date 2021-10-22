@@ -23,7 +23,7 @@
                         v-for="(section, index) in book.article"
                         :key="index"
                         :to="{
-                            name: 'book-bookid-sectionid',
+                            name: 'books-bookid-sectionid',
                             params: {
                                 bookid: $route.params.bookid,
                                 sectionid: index + 1,
