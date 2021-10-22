@@ -20,7 +20,7 @@
                 "
                 v-for="(nav, index) in nav_list"
                 :to="{
-                    name: 'book-bookid-sectionid',
+                    name: 'books-bookid-sectionid',
                     params: {
                         bookid: $route.params.bookid,
                         sectionid: index + 1,

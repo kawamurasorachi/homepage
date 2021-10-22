@@ -6,7 +6,7 @@
             v-for="book in books.filter((book) => book.is_public)"
             :key="book.id"
             :to="{
-                name: 'book-bookid',
+                name: 'books-bookid',
                 params: { bookid: book.id },
             }"
         >
